@@ -1,0 +1,311 @@
+<!--SLIDE-->
+<section class="slide flex w-[100%] mt-4 gap-6 h-[170px]">
+    <div class="slide__item w-1/2 relative bg-pinkLight px-14 py-5 flex justify-end overflow-hidden rounded-2xl">
+        <img class="absolute left-0 top-[-40%]" src="/img/Slide-1.png" alt="">
+        <div class="slide__content flex flex-col">
+            <p class="text-[20px] text-purpleDark font-semibold">All deserts</p>
+            <p class="text-[40px] text-orange font-bold">20% OFF</p>
+            <p class="text-[14px] text-gray font-normal mt-[auto]">Deserty</p>
+        </div>
+    </div>
+    <div class="slide__item w-1/2 relative bg-pinkLight px-14 py-5 flex justify-end overflow-hidden rounded-2xl">
+        <img class="absolute left-0 top-[-50%]" src="/img/Slide-2.png" alt="">
+        <div class="slide__content flex flex-col">
+            <p class="text-[20px] text-purpleDark font-semibold">All deserts</p>
+            <p class="text-[40px] text-orange font-bold">50% OFF</p>
+            <p class="text-[14px] text-gray font-normal mt-[auto]">Deserty</p>
+        </div>
+    </div>
+</section>
+
+<!-- CATEGORIES -->
+<section class="category flex mt-8 gap-8">
+    <div class="category__item flex-center flex-col w-1/6 shadow-md rounded-2xl py-[12px] px-8 text-center border-orange border-2 border-opacity-30 bg-YellowLight">
+        <img class="w-[40px] h-[40px] m-0 mx-[auto]" src="img/pizza.svg" alt="">
+        <p class="text-xl font-semibold mt-3">Pizza</p>
+    </div>
+    <a href="/product/burger" class="category__item flex-center flex-col w-1/6 shadow-md rounded-2xl py-[12px] px-8 text-center">
+            <img class="w-[40px] h-[40px] m-0 mx-[auto]" src="img/burger.svg" alt="">
+            <p class="text-xl font-semibold mt-3">Burger</p>
+    </a>
+    <a href="/product/bqq" class="category__item flex-center flex-col w-1/6 shadow-md rounded-2xl py-[12px] px-8 text-center">
+        <img class="w-[40px] h-[40px] m-0 mx-[auto]" src="img/meat.svg" alt="">
+        <p class="text-xl font-semibold mt-3">BQQ</p>
+    </a>
+    <a href="/product/sushi" class="category__item flex-center flex-col w-1/6 shadow-md rounded-2xl py-[12px] px-8 text-center">
+        <img class="w-[40px] h-[40px] m-0 mx-[auto]" src="img/sushi.svg" alt="">
+        <p class="text-xl font-semibold mt-3">Sushi</p>
+    </a>
+    <a href="/product/vegan" class="category__item flex-center flex-col w-1/6 shadow-md rounded-2xl py-[12px] px-8 text-center">
+        <img class="w-[40px] h-[40px] m-0 mx-[auto]" src="img/broccoli.svg" alt="">
+        <p class="text-xl font-semibold mt-3">Vegan</p>
+    </a>
+    <a href="/product/cake" class="category__item flex-center flex-col w-1/6 shadow-md rounded-2xl py-[12px] px-8 text-center">
+        <img class="w-[40px] h-[40px] m-0 mx-[auto]" src="img/cake.svg" alt="">
+        <p class="text-xl font-semibold mt-3">Cake</p>
+    </a>
+</section>
+
+<!-- LIST PRODUCT -->
+<section class="product__list mt-8 mb-8 grid grid-cols-4 gap-12">
+    <% menu.forEach((menu) => { %>
+        <% if(menu.type === 'pizza') { %> 
+            <div class="product__item cursor-pointer">
+                <div class="product__img">
+                    <img class="product--image mx-auto mb-4" src="<%=menu.image %>" alt="">
+                    <!-- <button class="product--image--btn">Add now</button> -->
+                </div>
+                <div class="product__content">
+                    <div class="flex-align-ct">
+                        <p class="font-bold text-xl">
+                            <%= menu.name %>
+                        </p>
+                        <span class="text-base text-orange ml-2 font-semibold">
+                            (<%= menu.size %>)
+                        </span>
+                    </div>
+                    <div class="flex-between">
+                        <div>
+                            <div class="text-xs text-orange">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                            </div>
+                            <div>
+                                <span class="font-bold text-orange">$</span>
+                                <span class="text-xl font-bold"><%= menu.price %></span>
+                            </div>
+                        </div>
+                        <button data-pizza = "<%= JSON.stringify(menu) %> " class="add-to-cart bg-orange w-[30px] h-[30px] font-bold text-lg flex-center text-white rounded-2xl">
+                            <i class="fa-sharp fa-solid fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        <% } %> 
+    <% }) %>
+</section>
+
+<!-- RESTAURANTS -->
+<!-- <section class="">
+    <h1 class="mt-7 text-black mb-2 text-[30px] font-bold">Nearby restaurants</h1>
+    <div class="restautants grid grid-cols-3 gap-6">
+        <div class="rounded-xl overflow-hidden shadow-lg relative">
+            <div>
+                <img 
+                class="w-full h-[160px] object-cover"
+                src="https://cdn.pixabay.com/photo/2017/01/26/02/06/platter-2009590_960_720.jpg" alt="">
+            </div>
+            <div class="px-4 py-4">
+                <div class="flex-between">
+                    <p class="text-xl font-bold">Royal Sushi House</p>
+                    <ion-icon class="text-2xl text-gray"name="bag-handle-outline"></ion-icon>
+                </div>
+                <div class="flex-align-ct text-sm text-gray mt-2 mb-3">
+                    <i class="fa-regular fa-clock mr-2"></i>
+                    <p class="text-sm">30-40min</p>
+                    <div class="w-1 h-1 bg-orange mx-2 rounded-full"></div>
+                    <p>$32 min sum</p>
+                </div>
+                <div class="flex-align-ct px-2 py-1 bg-YellowLight max-w-[80px] rounded-lg">
+                    <img class="w-4 h-4 mr-2" src="/img/pizza.svg" alt="">
+                    <p class="font-semibold text-gray">Sushi</p>
+                </div>
+                <div class="absolute bg-orange text-2 text-white py-2 px-4 rounded-bl-2xl top-0 right-0 text-xs">FEATURED</div>
+            </div>
+        </div>
+        <div class="rounded-xl overflow-hidden shadow-lg">
+            <div>
+                <img 
+                class="w-full h-[160px] object-cover"
+                src="https://cdn.pixabay.com/photo/2017/01/26/02/06/platter-2009590_960_720.jpg" alt="">
+            </div>
+            <div class="px-4 py-4">
+                <div class="flex-between">
+                    <p class="text-xl font-bold">Royal Sushi House</p>
+                    <ion-icon class="text-2xl text-gray"name="bag-handle-outline"></ion-icon>
+                </div>
+                <div class="flex-align-ct text-sm text-gray mt-2 mb-3">
+                    <i class="fa-regular fa-clock mr-2"></i>
+                    <p class="text-sm">30-40min</p>
+                    <div class="w-1 h-1 bg-orange mx-2 rounded-full"></div>
+                    <p>$32 min sum</p>
+                </div>
+                <div class="flex-align-ct px-2 py-1 bg-YellowLight max-w-[80px] rounded-lg">
+                    <img class="w-4 h-4 mr-2" src="/img/pizza.svg" alt="">
+                    <p class="font-semibold text-gray">Sushi</p>
+                </div>
+            </div>
+        </div>
+        <div class="rounded-xl overflow-hidden shadow-lg">
+            <div>
+                <img 
+                class="w-full h-[160px] object-cover"
+                src="https://cdn.pixabay.com/photo/2017/01/26/02/06/platter-2009590_960_720.jpg" alt="">
+            </div>
+            <div class="px-4 py-4">
+                <div class="flex-between">
+                    <p class="text-xl font-bold">Royal Sushi House</p>
+                    <ion-icon class="text-2xl text-gray"name="bag-handle-outline"></ion-icon>
+                </div>
+                <div class="flex-align-ct text-sm text-gray mt-2 mb-3">
+                    <i class="fa-regular fa-clock mr-2"></i>
+                    <p class="text-sm">30-40min</p>
+                    <div class="w-1 h-1 bg-orange mx-2 rounded-full"></div>
+                    <p>$32 min sum</p>
+                </div>
+                <div class="flex-align-ct gap-2">
+                    <div class="flex-align-ct px-2 py-1 bg-YellowLight max-w-[80px] rounded-lg">
+                        <img class="w-4 h-4 mr-2" src="/img/pizza.svg" alt="">
+                        <p class="font-semibold text-gray">Sushi</p>
+                    </div>
+                    <div class="flex-align-ct px-2 py-1 bg-YellowLight max-w-[80px] rounded-lg">
+                        <img class="w-4 h-4 mr-2" src="/img/pizza.svg" alt="">
+                        <p class="font-semibold text-gray">Sushi</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="rounded-xl overflow-hidden shadow-lg">
+            <div>
+                <img 
+                class="w-full h-[160px] object-cover"
+                src="https://cdn.pixabay.com/photo/2017/01/26/02/06/platter-2009590_960_720.jpg" alt="">
+            </div>
+            <div class="px-4 py-4">
+                <div class="flex-between">
+                    <p class="text-xl font-bold">Royal Sushi House</p>
+                    <ion-icon class="text-2xl text-gray"name="bag-handle-outline"></ion-icon>
+                </div>
+                <div class="flex-align-ct text-sm text-gray mt-2 mb-3">
+                    <i class="fa-regular fa-clock mr-2"></i>
+                    <p class="text-sm">30-40min</p>
+                    <div class="w-1 h-1 bg-orange mx-2 rounded-full"></div>
+                    <p>$32 min sum</p>
+                </div>
+                <div class="flex-align-ct px-2 py-1 bg-YellowLight max-w-[80px] rounded-lg">
+                    <img class="w-4 h-4 mr-2" src="/img/pizza.svg" alt="">
+                    <p class="font-semibold text-gray">Sushi</p>
+                </div>
+            </div>
+        </div>
+        <div class="rounded-xl overflow-hidden shadow-lg">
+            <div>
+                <img 
+                class="w-full h-[160px] object-cover"
+                src="https://cdn.pixabay.com/photo/2017/01/26/02/06/platter-2009590_960_720.jpg" alt="">
+            </div>
+            <div class="px-4 py-4">
+                <div class="flex-between">
+                    <p class="text-xl font-bold">Royal Sushi House</p>
+                    <ion-icon class="text-2xl text-gray"name="bag-handle-outline"></ion-icon>
+                </div>
+                <div class="flex-align-ct text-sm text-gray mt-2 mb-3">
+                    <i class="fa-regular fa-clock mr-2"></i>
+                    <p class="text-sm">30-40min</p>
+                    <div class="w-1 h-1 bg-orange mx-2 rounded-full"></div>
+                    <p>$32 min sum</p>
+                </div>
+                <div class="flex-align-ct px-2 py-1 bg-YellowLight max-w-[80px] rounded-lg">
+                    <img class="w-4 h-4 mr-2" src="/img/pizza.svg" alt="">
+                    <p class="font-semibold text-gray">Sushi</p>
+                </div>
+            </div>
+        </div>
+        <div class="rounded-xl overflow-hidden shadow-lg">
+            <div>
+                <img 
+                class="w-full h-[160px] object-cover"
+                src="https://cdn.pixabay.com/photo/2017/01/26/02/06/platter-2009590_960_720.jpg" alt="">
+            </div>
+            <div class="px-4 py-4">
+                <div class="flex-between">
+                    <p class="text-xl font-bold">Royal Sushi House</p>
+                    <ion-icon class="text-2xl text-gray"name="bag-handle-outline"></ion-icon>
+                </div>
+                <div class="flex-align-ct text-sm text-gray mt-2 mb-3">
+                    <i class="fa-regular fa-clock mr-2"></i>
+                    <p class="text-sm">30-40min</p>
+                    <div class="w-1 h-1 bg-orange mx-2 rounded-full"></div>
+                    <p>$32 min sum</p>
+                </div>
+                <div class="flex-align-ct px-2 py-1 bg-YellowLight max-w-[80px] rounded-lg">
+                    <img class="w-4 h-4 mr-2" src="/img/pizza.svg" alt="">
+                    <p class="font-semibold text-gray">Sushi</p>
+                </div>
+            </div>
+        </div>
+        <div class="rounded-xl overflow-hidden shadow-lg">
+            <div>
+                <img 
+                class="w-full h-[160px] object-cover"
+                src="https://cdn.pixabay.com/photo/2017/01/26/02/06/platter-2009590_960_720.jpg" alt="">
+            </div>
+            <div class="px-4 py-4">
+                <div class="flex-between">
+                    <p class="text-xl font-bold">Royal Sushi House</p>
+                    <ion-icon class="text-2xl text-gray"name="bag-handle-outline"></ion-icon>
+                </div>
+                <div class="flex-align-ct text-sm text-gray mt-2 mb-3">
+                    <i class="fa-regular fa-clock mr-2"></i>
+                    <p class="text-sm">30-40min</p>
+                    <div class="w-1 h-1 bg-orange mx-2 rounded-full"></div>
+                    <p>$32 min sum</p>
+                </div>
+                <div class="flex-align-ct px-2 py-1 bg-YellowLight max-w-[80px] rounded-lg">
+                    <img class="w-4 h-4 mr-2" src="/img/pizza.svg" alt="">
+                    <p class="font-semibold text-gray">Sushi</p>
+                </div>
+            </div>
+        </div>
+        <div class="rounded-xl overflow-hidden shadow-lg">
+            <div>
+                <img 
+                class="w-full h-[160px] object-cover"
+                src="https://cdn.pixabay.com/photo/2017/01/26/02/06/platter-2009590_960_720.jpg" alt="">
+            </div>
+            <div class="px-4 py-4">
+                <div class="flex-between">
+                    <p class="text-xl font-bold">Royal Sushi House</p>
+                    <ion-icon class="text-2xl text-gray"name="bag-handle-outline"></ion-icon>
+                </div>
+                <div class="flex-align-ct text-sm text-gray mt-2 mb-3">
+                    <i class="fa-regular fa-clock mr-2"></i>
+                    <p class="text-sm">30-40min</p>
+                    <div class="w-1 h-1 bg-orange mx-2 rounded-full"></div>
+                    <p>$32 min sum</p>
+                </div>
+                <div class="flex-align-ct px-2 py-1 bg-YellowLight max-w-[80px] rounded-lg">
+                    <img class="w-4 h-4 mr-2" src="/img/pizza.svg" alt="">
+                    <p class="font-semibold text-gray">Sushi</p>
+                </div>
+            </div>
+        </div>
+        <div class="rounded-xl overflow-hidden shadow-lg">
+            <div>
+                <img 
+                class="w-full h-[160px] object-cover"
+                src="https://cdn.pixabay.com/photo/2017/01/26/02/06/platter-2009590_960_720.jpg" alt="">
+            </div>
+            <div class="px-4 py-4">
+                <div class="flex-between">
+                    <p class="text-xl font-bold">Royal Sushi House</p>
+                    <ion-icon class="text-2xl text-gray"name="bag-handle-outline"></ion-icon>
+                </div>
+                <div class="flex-align-ct text-sm text-gray mt-2 mb-3">
+                    <i class="fa-regular fa-clock mr-2"></i>
+                    <p class="text-sm">30-40min</p>
+                    <div class="w-1 h-1 bg-orange mx-2 rounded-full"></div>
+                    <p>$32 min sum</p>
+                </div>
+                <div class="flex-align-ct px-2 py-1 bg-YellowLight max-w-[80px] rounded-lg">
+                    <img class="w-4 h-4 mr-2" src="/img/pizza.svg" alt="">
+                    <p class="font-semibold text-gray">Sushi</p>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</section> -->
